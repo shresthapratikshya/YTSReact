@@ -7,7 +7,6 @@ body {
     background-size: cover;
 }
 
-/* header */
 .nav {
     background-color: #33B3B3;
     height: 100px;
@@ -43,10 +42,12 @@ button:hover {
     background-color: white;
     color: black;
     cursor: pointer;
-    /* border-color: rgb(87, 12, 12); */
+    border-color: rgb(87, 12, 12);
     border: 2px solid #33B3B3;
 
 }
+
+*/
 
 /* maincontent */
 .movie-list {
@@ -71,6 +72,7 @@ hr {
     margin-top: 40px;
     padding: 20px;
 }
+
 
 .movie-cover {
     width: 30vh;
@@ -107,7 +109,6 @@ h5 {
     background-color: white;
     color: #33B3B3;
     cursor: pointer;
-    /* border-color: rgb(87, 12, 12); */
     border: 2px solid #33B3B3;
 
 }
@@ -120,8 +121,9 @@ h5 {
     color: white;
     font-size: 20px;
     height: 50px;
-    /* padding: 10px; */
+    padding: 10px;
 }
+
 
 /* movieDetails */
 .movie-details {

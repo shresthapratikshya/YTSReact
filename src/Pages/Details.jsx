@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom';
-
+import { useParams } from 'react-router-dom';
+import '../Css/Details.css';
 const Details = () => {
     const [movieDetails, setMovieDetails] = useState([]);
-    const location = useLocation();
-    console.log(location);
-    const id = location.state.data;
-    console.log(id);
 
-    const detailed =useEffect(()=>{
+    useEffect(()=>{
        getApi();
     },[]);
 
+    const {id} =useParams();
     async function getApi(){
         try {
             await fetch(`https://yts.mx/api/v2/movie_details.json?movie_id=${id}`)
@@ -19,18 +16,19 @@ const Details = () => {
             .then(data=>
                 setMovieDetails(data.data.movie));
         } catch (error) {
-            
+            console.error(error);
         }
     }
+    const {title, medium_cover_image, year, description_intro} = movieDetails;
 
     return (
         <div className='movie-details'>
-            <div className='detail-title'>{movieDetails.title}</div>
+            <div className='detail-title'>{title}</div>
             <div className='detail-cover'>
-                <img src={movieDetails.medium_cover_image}></img>
+                <img src={medium_cover_image} alt={title}></img>
             </div>
-            <div className='movie-year'>{movieDetails.year}</div>
-            <div className='movie-description'>{movieDetails.description_intro}</div>
+            <div className='movie-year'>{year}</div>
+            <div className='movie-description'>{description_intro}</div>
         </div>
     )
 }

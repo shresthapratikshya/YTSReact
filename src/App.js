@@ -1,14 +1,13 @@
-// import logo from './logo.svg';
-import './YTSfolder/style.css';
-import Home from './YTSfolder/Home';
-import { BrowserRouter, createBrowserRouter, Outlet, RouterProvider, Route, Switch, Routes } from 'react-router-dom';
-import Header from './YTSfolder/Header';
-import Details from './YTSfolder/Details';
+import Home from './Pages/Home';
+import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
+import Header from './Component/Header';
+import Details from './Pages/Details';
 import React from 'react';
+// import Display from './Pages/Display';
 
 function App() {
   return (
-    <RouterProvider router={route} />
+    <RouterProvider router={route} /> //prop= router, value= route
   );
 }
 
@@ -30,9 +29,14 @@ const route = createBrowserRouter([
         element: <Home />
       },
       {
-        path: 'details',
+        path: 'details/:id',
         element: <Details />
       }
+      // ,
+      // {
+      //   path: 'display/:title',
+      //   element: <Display />
+      // }
     ]
   }
 ])
