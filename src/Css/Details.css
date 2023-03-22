@@ -169,3 +169,47 @@ h5 {
     color: black;
     font-weight: bold;
 }
+
+.movie-suggestion {
+    background-color: black;
+    /* justify-content: center; */
+    /* align-items: center; */
+    display: inline-grid;
+    /* grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); */
+    /* grid-gap: 10px; */
+    margin: 45px;
+    margin-left: 20vh;
+
+}
+
+.suggested-title {
+    color: white;
+    font-size: 20px;
+    align-items: center;
+    /* background-color: #33B3B3; */
+}
+
+.suggested-list {
+    display: flex;
+    margin-left: 30px;
+    margin-right: 30px;
+    padding: 10px;
+    /* justify-content: space-between; */
+}
+
+.suggestion {
+    width: 30vh;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    display: inline-grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 10px;
+    margin: 30px;
+}
+
+#movie-suggestTitle {
+    color: white;
+    margin-left: 40px;
+
+}

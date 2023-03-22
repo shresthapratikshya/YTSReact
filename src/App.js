@@ -3,7 +3,7 @@ import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 import Header from './Component/Header';
 import Details from './Pages/Details';
 import React from 'react';
-// import Display from './Pages/Display';
+// import Display from './Pages /Display';
 
 function App() {
   return (

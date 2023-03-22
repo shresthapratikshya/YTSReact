@@ -1,38 +1,47 @@
 import React, { useEffect, useState } from "react";
 import "../Css/Home.css";
-// import Layout from './Layout';
 import { Link } from "react-router-dom";
 
 const Home = () => {
   const [movieData, setMovieData] = useState([]);
-  const [searchTitle, setSearchTitle] = useState();
+  const [filterData, setFilterData] = useState([]);
 
   async function getApi() {
     try {
-      fetch(`https://yts.mx/api/v2/list_movies.json`)
+      await fetch(`https://yts.mx/api/v2/list_movies.json`)
         .then((response) => response.json())
         .then((res) => {
           setMovieData(res.data.movies);
-          console.log(res.data.movies);
+          setFilterData(res.data.movies);
         });
     } catch (error) {
       console.log(error);
     }
   }
-  // useEffect(()=>{
-  //   getApi();
-  // },[])
 
   useEffect(() => {
-    if (searchTitle === "") {
-      getApi();
-    } else {
-      const filteredMovies = movieData.filter((movie) =>
-        movie.title.includes(searchTitle)
-      );
-      setMovieData(filteredMovies);
-    }
-  }, [searchTitle]);
+    getApi();
+  }, []);
+
+  // useEffect(() => {
+  //   if (searchTitle === "") {
+  //     getApi();
+  //   } else {
+  //     const filteredMovies = movieData.filter((movie) =>
+  //       movie.title.includes(searchTitle)
+  //     );
+  //     setMovieData(filteredMovies);
+  //   }
+  // }, [searchTitle]);
+
+  const searchMovies = (event) => {
+    if (!event.target.value) return getApi();
+
+    const filteredMovies = movieData.filter((movie) =>
+      movie.title.includes(event.target.value)
+    );
+    setFilterData(filteredMovies);
+  };
 
   return (
     <div className="main-content">
@@ -43,13 +52,13 @@ const Home = () => {
             type="text"
             placeholder="Search here"
             className="search-titleBar"
-            onChange={(e) => setSearchTitle(e.target.value)}
+            onChange={searchMovies}
           ></input>
         </div>
 
         <hr></hr>
-        {movieData &&
-          movieData.map(({ id, medium_cover_image, title, genres }) => {
+        {filterData &&
+          filterData.map(({ id, medium_cover_image, title, genres }) => {
             return (
               <div className="movie-cover" key={id}>
                 <img src={medium_cover_image} alt="Movie cover"></img>
